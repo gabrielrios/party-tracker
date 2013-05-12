@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.ViewInviteTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputText value="#{bundle.ViewInviteLabel_id}"/>
+          <h:outputText value="#{inviteController.selected.id}" title="#{bundle.ViewInviteTitle_id}"/>
+          <h:outputText value="#{bundle.ViewInviteLabel_presence}"/>
+          <h:outputText value="#{inviteController.selected.presence}" title="#{bundle.ViewInviteTitle_presence}"/>
+          <h:outputText value="#{bundle.ViewInviteLabel_partyId}"/>
+          <h:outputText value="#{inviteController.selected.partyId}" title="#{bundle.ViewInviteTitle_partyId}"/>
+          <h:outputText value="#{bundle.ViewInviteLabel_hostId}"/>
+          <h:outputText value="#{inviteController.selected.hostId}" title="#{bundle.ViewInviteTitle_hostId}"/>
+          <h:outputText value="#{bundle.ViewInviteLabel_guestId}"/>
+          <h:outputText value="#{inviteController.selected.guestId}" title="#{bundle.ViewInviteTitle_guestId}"/>
+        </h:panelGrid>
+        <br />
+        <h:commandLink action="#{inviteController.destroyAndView}" value="#{bundle.ViewInviteDestroyLink}"/>
+        <br />
+        <br />
+        <h:link outcome="Edit" value="#{bundle.ViewInviteEditLink}"/>
+        <br />
+        <h:commandLink action="#{inviteController.prepareCreate}" value="#{bundle.ViewInviteCreateLink}" />
+        <br />
+        <h:commandLink action="#{inviteController.prepareList}" value="#{bundle.ViewInviteShowAllLink}"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.ViewInviteIndexLink}"/>
+
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>

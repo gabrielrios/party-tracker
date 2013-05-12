@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+  <ui:composition template="/template.xhtml">
+    <ui:define name="title">
+      <h:outputText value="#{bundle.EditInviteTitle}"></h:outputText>
+    </ui:define>
+    <ui:define name="body">
+      <h:panelGroup id="messagePanel" layout="block">
+        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+      </h:panelGroup>
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputLabel value="#{bundle.EditInviteLabel_id}" for="id" />
+          <h:inputText id="id" value="#{inviteController.selected.id}" title="#{bundle.EditInviteTitle_id}" required="true" requiredMessage="#{bundle.EditInviteRequiredMessage_id}"/>
+          <h:outputLabel value="#{bundle.EditInviteLabel_presence}" for="presence" />
+          <h:inputText id="presence" value="#{inviteController.selected.presence}" title="#{bundle.EditInviteTitle_presence}" />
+          <h:outputLabel value="#{bundle.EditInviteLabel_partyId}" for="partyId" />
+          <h:selectOneMenu id="partyId" value="#{inviteController.selected.partyId}" title="#{bundle.EditInviteTitle_partyId}" required="true" requiredMessage="#{bundle.EditInviteRequiredMessage_partyId}">
+            <f:selectItems value="#{partyController.itemsAvailableSelectOne}"/>
+          </h:selectOneMenu>
+          <h:outputLabel value="#{bundle.EditInviteLabel_hostId}" for="hostId" />
+          <h:selectOneMenu id="hostId" value="#{inviteController.selected.hostId}" title="#{bundle.EditInviteTitle_hostId}" required="true" requiredMessage="#{bundle.EditInviteRequiredMessage_hostId}">
+            <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+          </h:selectOneMenu>
+          <h:outputLabel value="#{bundle.EditInviteLabel_guestId}" for="guestId" />
+          <h:selectOneMenu id="guestId" value="#{inviteController.selected.guestId}" title="#{bundle.EditInviteTitle_guestId}" required="true" requiredMessage="#{bundle.EditInviteRequiredMessage_guestId}">
+            <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+          </h:selectOneMenu>
+        </h:panelGrid>
+        <h:commandLink action="#{inviteController.update}" value="#{bundle.EditInviteSaveLink}"/>
+        <br />
+        <br />
+        <h:link outcome="View" value="#{bundle.EditInviteViewLink}"/>
+        <br />
+        <h:commandLink action="#{inviteController.prepareList}" value="#{bundle.EditInviteShowAllLink}" immediate="true"/>
+        <br />
+        <br />
+        <h:link outcome="/index" value="#{bundle.EditInviteIndexLink}" />
+      </h:form>
+    </ui:define>
+  </ui:composition>
+
+</html>
