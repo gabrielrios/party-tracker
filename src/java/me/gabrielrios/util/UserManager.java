@@ -72,11 +72,10 @@ public class UserManager {
     /**
      * <p>User properties.</p>
      */
+    private String email;
     private String username;
     private String password;
     private String passwordv;
-    private String fname;
-    private String lname;   
     
     // -------------------------------------------------------------- Properties
     
@@ -104,21 +103,14 @@ public class UserManager {
         this.passwordv = passwordv;
     }
     
-    public String getFname() {
-        return fname;
+    public String getEmail() {
+        return email;
     }
     
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setEmail(String email) {
+        this.email = email;
     }
     
-    public String getLname() {
-        return lname;
-    }
-    
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
     
     
     // ---------------------------------------------------------- Public Methods
@@ -179,6 +171,7 @@ public class UserManager {
                 return null;
             }
             wuser = new User();
+            wuser.setEmail(email);
             wuser.setPassword(password);
             wuser.setUsername(username);
             try {

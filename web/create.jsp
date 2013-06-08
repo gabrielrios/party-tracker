@@ -50,16 +50,11 @@
     <f:view>
         <h:form id="create">            
             <h:panelGrid columns="3" border="0">
-                First Name: <h:inputText id="fname"       
+                Email <h:inputText id="email"       
                                          requiredMessage="*"
-                                         value="#{usermanager.fname}"
+                                         value="#{usermanager.email}"
                                          required="true"/>  
-                            <h:message for="create:fname" style="color: red"/>
-                Last Name: <h:inputText id="lname"  
-                                        requiredMessage="*"
-                                        value="#{usermanager.lname}"
-                                        required="true"/>
-                           <h:message for="create:lname" style="color: red"/>
+                            <h:message for="create:email" style="color: red"/>
                 Username: <h:inputText id="username" 
                                        requiredMessage="*"
                                        value="#{usermanager.username}"

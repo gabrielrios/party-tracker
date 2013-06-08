@@ -13,8 +13,8 @@
         <Node id="party/List.xhtml" x="900" y="300" zoom="true"/>
         <Node id="invite/View.xhtml" x="650" y="450" zoom="true"/>
         <Node id="invite/List.xhtml" x="650" y="300" zoom="true"/>
-        <Node id="user/List.xhtml" x="650" y="150" zoom="false"/>
         <Node id="party/Edit.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="user/List.xhtml" x="650" y="150" zoom="false"/>
         <Node id="invite/Edit.xhtml" x="150" y="300" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
