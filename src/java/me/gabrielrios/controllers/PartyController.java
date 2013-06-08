@@ -19,6 +19,7 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
 
@@ -40,6 +41,8 @@ public class PartyController implements Serializable {
   public MapModel getSimpleModel() {
     if (simpleModel == null) {
       simpleModel = new DefaultMapModel();
+      //Shared coordinates  
+
       for (Iterator it = getItems().iterator(); it.hasNext();) {
         Party p = (Party) it.next();
         
@@ -48,7 +51,7 @@ public class PartyController implements Serializable {
    }
     return simpleModel;
   }
-
+  
   public Party getSelected() {
     if (current == null) {
       current = new Party();
@@ -83,6 +86,12 @@ public class PartyController implements Serializable {
     return "List";
   }
 
+  public String prepareInvite() {
+    current = (Party) getItems().getRowData();
+    selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+    return "Invite";
+  }
+  
   public String prepareView() {
     current = (Party) getItems().getRowData();
     selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
@@ -203,6 +212,7 @@ public class PartyController implements Serializable {
   public SelectItem[] getItemsAvailableSelectOne() {
     return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
   }
+  
 
   @FacesConverter(forClass = Party.class)
   public static class PartyControllerConverter implements Converter {
@@ -239,5 +249,6 @@ public class PartyController implements Serializable {
         throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Party.class.getName());
       }
     }
+
   }
 }

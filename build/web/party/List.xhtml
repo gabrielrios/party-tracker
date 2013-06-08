@@ -3,17 +3,72 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
 
   <ui:composition template="/template.xhtml">
     <ui:define name="title">
-      <h:outputText value="#{bundle.ListPartyTitle}"></h:outputText>
+      <h:outputText value="Festas"></h:outputText>
     </ui:define>
     <ui:define name="body">
-      <p:gmap center="" zoom="13" type="HYBRID"   
+      <h:panelGrid columns="2">
+      <p:gmap center="-14.7971774,-39.0344009" zoom="14" type="HYBRID"   
         style="width:600px;height:400px"  
         model="#{partyController.simpleModel}" />  
+      
+      <h:form styleClass="jsfcrud_list_form">
+        <h:panelGroup id="messagePanel" layout="block">
+          <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+        </h:panelGroup>
+        <h:outputText escape="false" value="#{bundle.ListPartyEmpty}" rendered="#{partyController.items.rowCount == 0}"/>
+        <h:panelGroup rendered="#{partyController.items.rowCount > 0}">
+          <h:outputText value="#{partyController.pagination.pageFirstItem + 1}..#{partyController.pagination.pageLastItem + 1}/#{partyController.pagination.itemsCount}"/>&nbsp;
+          <h:commandLink action="#{partyController.previous}" value="#{bundle.Previous} #{partyController.pagination.pageSize}" rendered="#{partyController.pagination.hasPreviousPage}"/>&nbsp;
+          <h:commandLink action="#{partyController.next}" value="#{bundle.Next} #{partyController.pagination.pageSize}" rendered="#{partyController.pagination.hasNextPage}"/>&nbsp;
+          <h:dataTable value="#{partyController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+            <h:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListPartyTitle_name}"/>
+              </f:facet>
+              <h:outputText value="#{item.name}"/>
+            </h:column>
+            <h:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListPartyTitle_description}"/>
+              </f:facet>
+              <h:outputText value="#{item.description}"/>
+            </h:column>
+            <h:column>
+              <f:facet name="header">
+                <h:outputText value="#{bundle.ListPartyTitle_address}"/>
+              </f:facet>
+              <h:outputText value="#{item.address}"/>
+            </h:column>
+            <h:column>
+              <f:facet name="header">
+                <h:outputText value="&nbsp;"/>
+              </f:facet>
+              <h:commandLink action="#{partyController.prepareInvite}" value="#{bundle.ListPartyInviteLink}"/>
+              <h:outputText value=" "/>
+              <h:commandLink action="#{partyController.prepareView}" value="#{bundle.ListPartyViewLink}"/>
+              <h:outputText value=" "/>
+              <h:commandLink action="#{partyController.prepareEdit}" value="#{bundle.ListPartyEditLink}"/>
+              <h:outputText value=" "/>
+              <h:commandLink action="#{partyController.destroy}" value="#{bundle.ListPartyDestroyLink}"/>
+            </h:column>
+          </h:dataTable>
+        </h:panelGroup>
+        <br />
+        <h:panelGrid columns="2">
+          <h:commandLink action="#{partyController.prepareCreate}" value="#{bundle.ListPartyCreateLink}"/>
+          <h:link outcome="/user/Create" value="Add User"/>
+        </h:panelGrid>
+        <br />
+      </h:form>
+      </h:panelGrid>
     </ui:define>
   </ui:composition>
 
+  
+  
 </html>

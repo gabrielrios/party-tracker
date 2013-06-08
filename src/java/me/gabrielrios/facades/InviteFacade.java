@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import me.gabrielrios.models.Invite;
+import java.util.List;
 
 /**
  *
@@ -26,5 +27,9 @@ public class InviteFacade extends AbstractFacade<Invite> {
   public InviteFacade() {
     super(Invite.class);
   }
+  
+
+
+  
   
 }

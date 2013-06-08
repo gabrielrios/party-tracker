@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import me.gabrielrios.models.Party;
 import me.gabrielrios.models.User;
 
-@Generated(value="EclipseLink-2.3.2.v20111125-r10461", date="2013-05-12T12:45:05")
+@Generated(value="EclipseLink-2.3.2.v20111125-r10461", date="2013-06-08T09:42:48")
 @StaticMetamodel(Invite.class)
 public class Invite_ { 
 

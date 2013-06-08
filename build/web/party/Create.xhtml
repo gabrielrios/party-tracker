@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
 
   <ui:composition template="/template.xhtml">
@@ -15,16 +16,13 @@
       </h:panelGroup>
       <h:form>
         <h:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.CreatePartyLabel_id}" for="id" />
-          <h:inputText id="id" value="#{partyController.selected.id}" title="#{bundle.CreatePartyTitle_id}" required="true" requiredMessage="#{bundle.CreatePartyRequiredMessage_id}"/>
           <h:outputLabel value="#{bundle.CreatePartyLabel_name}" for="name" />
           <h:inputText id="name" value="#{partyController.selected.name}" title="#{bundle.CreatePartyTitle_name}" required="true" requiredMessage="#{bundle.CreatePartyRequiredMessage_name}"/>
           <h:outputLabel value="#{bundle.CreatePartyLabel_description}" for="description" />
           <h:inputTextarea rows="4" cols="30" id="description" value="#{partyController.selected.description}" title="#{bundle.CreatePartyTitle_description}" />
           <h:outputLabel value="#{bundle.CreatePartyLabel_startAt}" for="startAt" />
-          <h:inputText id="startAt" value="#{partyController.selected.startAt}" title="#{bundle.CreatePartyTitle_startAt}" required="true" requiredMessage="#{bundle.CreatePartyRequiredMessage_startAt}">
-            <f:convertDateTime pattern="HH:mm:ss" />
-          </h:inputText>
+          <p:calendar value="#{partyController.selected.startAt}" id="popupCal" />
+       
           <h:outputLabel value="#{bundle.CreatePartyLabel_address}" for="address" />
           <h:inputTextarea rows="4" cols="30" id="address" value="#{partyController.selected.address}" title="#{bundle.CreatePartyTitle_address}" required="true" requiredMessage="#{bundle.CreatePartyRequiredMessage_address}"/>
           <h:outputLabel value="#{bundle.CreatePartyLabel_userId}" for="userId" />
@@ -39,7 +37,6 @@
         <h:commandLink action="#{partyController.prepareList}" value="#{bundle.CreatePartyShowAllLink}" immediate="true"/>
         <br />
         <br />
-        <h:link outcome="/index" value="#{bundle.CreatePartyIndexLink}"/>
       </h:form>
     </ui:define>
   </ui:composition>

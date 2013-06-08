@@ -15,10 +15,6 @@
       </h:panelGroup>
       <h:form>
         <h:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.CreateInviteLabel_id}" for="id" />
-          <h:inputText id="id" value="#{inviteController.selected.id}" title="#{bundle.CreateInviteTitle_id}" required="true" requiredMessage="#{bundle.CreateInviteRequiredMessage_id}"/>
-          <h:outputLabel value="#{bundle.CreateInviteLabel_presence}" for="presence" />
-          <h:inputText id="presence" value="#{inviteController.selected.presence}" title="#{bundle.CreateInviteTitle_presence}" />
           <h:outputLabel value="#{bundle.CreateInviteLabel_partyId}" for="partyId" />
           <h:selectOneMenu id="partyId" value="#{inviteController.selected.partyId}" title="#{bundle.CreateInviteTitle_partyId}" required="true" requiredMessage="#{bundle.CreateInviteRequiredMessage_partyId}">
             <f:selectItems value="#{partyController.itemsAvailableSelectOne}"/>
@@ -36,10 +32,9 @@
         <h:commandLink action="#{inviteController.create}" value="#{bundle.CreateInviteSaveLink}" />
         <br />
         <br />
-        <h:commandLink action="#{inviteController.prepareList}" value="#{bundle.CreateInviteShowAllLink}" immediate="true"/>
+        <h:link outcome="/party/List" value="#{bundle.ListUserIndexLink}"/>
         <br />
         <br />
-        <h:link outcome="/index" value="#{bundle.CreateInviteIndexLink}"/>
       </h:form>
     </ui:define>
   </ui:composition>

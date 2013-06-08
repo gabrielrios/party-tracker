@@ -42,15 +42,14 @@ import org.primefaces.model.map.LatLng;
 @Table(name = "party")
 @XmlRootElement
 @NamedQueries({
-  @NamedQuery(name = "Party.findAll", query = "SELECT p FROM Party p"),
-  @NamedQuery(name = "Party.findById", query = "SELECT p FROM Party p WHERE p.id = :id"),
-  @NamedQuery(name = "Party.findByName", query = "SELECT p FROM Party p WHERE p.name = :name"),
-  @NamedQuery(name = "Party.findByStartAt", query = "SELECT p FROM Party p WHERE p.startAt = :startAt")})
+@NamedQuery(name = "Party.findAll", query = "SELECT p FROM Party p"),
+@NamedQuery(name = "Party.findById", query = "SELECT p FROM Party p WHERE p.id = :id"),
+@NamedQuery(name = "Party.findByName", query = "SELECT p FROM Party p WHERE p.name = :name"),
+@NamedQuery(name = "Party.findByStartAt", query = "SELECT p FROM Party p WHERE p.startAt = :startAt")})
 public class Party implements Serializable {
   private static final long serialVersionUID = 1L;
   @Id
   @Basic(optional = false)
-  @NotNull
   @Column(name = "id")
   private Integer id;
   @Basic(optional = false)
@@ -80,13 +79,10 @@ public class Party implements Serializable {
   private User userId;
 
   @Basic(optional = false)
-  @NotNull
   @Column(name = "latitude")
   private Double latitude;
   
   @Basic(optional = false)
-  @NotNull
-  @Size(min = 1, max = 255)
   @Column(name = "longitude")
   private Double longitude;
   
@@ -184,11 +180,11 @@ public class Party implements Serializable {
 
   @Override
   public String toString() {
-    return "me.gabrielrios.models.Party[ id=" + id + " ]";
+    return name;
   }
  
   public LatLng getCoordinates() {
-    if (latitude == null || longitude == null) {
+//    if (latitude == null || longitude == null) {
       Geocoder geocoder = new Geocoder();
       GeocoderRequest geocoderRequest = new GeocoderRequestBuilder().setAddress(address).setLanguage("pt-BR").getGeocoderRequest();
       GeocodeResponse geocoderResponse = geocoder.geocode(geocoderRequest);
@@ -199,7 +195,7 @@ public class Party implements Serializable {
         latitude = coord.getLat().doubleValue();
         longitude = coord.getLng().doubleValue();
       }
-    }
+//    }
     return new LatLng(latitude, longitude);
   }
 }

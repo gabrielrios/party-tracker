@@ -15,12 +15,10 @@
       </h:panelGroup>
       <h:form>
         <h:panelGrid columns="2">
-          <h:outputLabel value="#{bundle.CreateUserLabel_id}" for="id" />
-          <h:inputText id="id" value="#{userController.selected.id}" title="#{bundle.CreateUserTitle_id}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_id}"/>
           <h:outputLabel value="#{bundle.CreateUserLabel_username}" for="username" />
           <h:inputText id="username" value="#{userController.selected.username}" title="#{bundle.CreateUserTitle_username}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_username}"/>
           <h:outputLabel value="#{bundle.CreateUserLabel_password}" for="password" />
-          <h:inputText id="password" value="#{userController.selected.password}" title="#{bundle.CreateUserTitle_password}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_password}"/>
+          <h:inputSecret id="password" value="#{userController.selected.password}" title="#{bundle.CreateUserTitle_password}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_password}"/>
           <h:outputLabel value="#{bundle.CreateUserLabel_email}" for="email" />
           <h:inputText id="email" value="#{userController.selected.email}" title="#{bundle.CreateUserTitle_email}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_email}"/>
         </h:panelGrid>
@@ -31,7 +29,7 @@
         <h:commandLink action="#{userController.prepareList}" value="#{bundle.CreateUserShowAllLink}" immediate="true"/>
         <br />
         <br />
-        <h:link outcome="/index" value="#{bundle.CreateUserIndexLink}"/>
+        
       </h:form>
     </ui:define>
   </ui:composition>

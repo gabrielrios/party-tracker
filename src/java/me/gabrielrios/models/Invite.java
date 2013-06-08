@@ -26,18 +26,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "invite")
 @XmlRootElement
 @NamedQueries({
-  @NamedQuery(name = "Invite.findAll", query = "SELECT i FROM Invite i"),
-  @NamedQuery(name = "Invite.findById", query = "SELECT i FROM Invite i WHERE i.id = :id"),
-  @NamedQuery(name = "Invite.findByPresence", query = "SELECT i FROM Invite i WHERE i.presence = :presence")})
+@NamedQuery(name = "Invite.findAll", query = "SELECT i FROM Invite i"),
+@NamedQuery(name = "Invite.findById", query = "SELECT i FROM Invite i WHERE i.id = :id"),
+@NamedQuery(name="Invite.findAllByPartyId", query="SELECT i FROM Invite i WHERE i.partyId = :partyId"),
+@NamedQuery(name = "Invite.findByPresence", query = "SELECT i FROM Invite i WHERE i.presence = :presence")})
+
 public class Invite implements Serializable {
   private static final long serialVersionUID = 1L;
   @Id
   @Basic(optional = false)
-  @NotNull
   @Column(name = "id")
   private Integer id;
+  
   @Column(name = "presence")
   private Integer presence;
+  
   @JoinColumn(name = "party_id", referencedColumnName = "id")
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
   private Party partyId;
