@@ -12,6 +12,10 @@
   </h:head>
 
   <h:body>
+    Welcome ${user.username}
+    <h:form>
+                <h:commandButton id="logout" value="Logout" action="#{usermanager.logout}"/>
+     </h:form>
     <h1>
       <ui:insert name="title">Default Title</ui:insert>
     </h1>
