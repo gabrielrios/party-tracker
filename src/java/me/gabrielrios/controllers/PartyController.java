@@ -42,7 +42,6 @@ public class PartyController implements Serializable {
     if (simpleModel == null) {
       simpleModel = new DefaultMapModel();
       //Shared coordinates  
-
       for (Iterator it = getItems().iterator(); it.hasNext();) {
         Party p = (Party) it.next();
         

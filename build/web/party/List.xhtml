@@ -48,20 +48,18 @@
               <f:facet name="header">
                 <h:outputText value="&nbsp;"/>
               </f:facet>
-              <h:commandLink action="#{partyController.prepareInvite}" value="#{bundle.ListPartyInviteLink}"/>
+              <h:commandLink action="#{partyController.prepareView}" value="Visualizar"/>
               <h:outputText value=" "/>
-              <h:commandLink action="#{partyController.prepareView}" value="#{bundle.ListPartyViewLink}"/>
+              <h:commandLink action="#{partyController.prepareEdit}" value="Editar"/>
               <h:outputText value=" "/>
-              <h:commandLink action="#{partyController.prepareEdit}" value="#{bundle.ListPartyEditLink}"/>
-              <h:outputText value=" "/>
-              <h:commandLink action="#{partyController.destroy}" value="#{bundle.ListPartyDestroyLink}"/>
+              <h:commandLink action="#{partyController.destroy}" value="Apagar"/>
             </h:column>
           </h:dataTable>
         </h:panelGroup>
         <br />
         <h:panelGrid columns="2">
-          <h:commandLink action="#{partyController.prepareCreate}" value="#{bundle.ListPartyCreateLink}"/>
-          <h:link outcome="/user/Create" value="Add User"/>
+          <h:commandLink action="#{partyController.prepareCreate}" value="Adicionar Festa"/>
+          <h:link outcome="/user/Create" value="Adicionar Usuário"/>
         </h:panelGrid>
         <br />
       </h:form>

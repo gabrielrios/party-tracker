@@ -13,9 +13,14 @@
 
   <h:body>
     <div style="float:right;">
-    Welcome ${user.username}
+    Bem vindo ${user.username}
+    <h:panelGroup rendered="#{user.openInvitesSize > 0}">
+      Você tem ${user.openInvitesSize} convites em aberto.
+       <h:link outcome="/open_invites/List" value="Clique aqui para aceitar!"/>
+    </h:panelGroup>
+   
     <h:form>
-      <h:commandButton id="logout" value="Logout" action="#{usermanager.logout}"/>
+      <h:commandButton id="logout" value="Sair" action="#{usermanager.logout}"/>
     </h:form>
     </div>
     <h1>

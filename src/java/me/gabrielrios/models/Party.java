@@ -198,5 +198,9 @@ public class Party implements Serializable {
 //    }
     return new LatLng(latitude, longitude);
   }
+  
+  public String getCoordinatesAsString() {
+    return String.format("%.4f,%.4f", latitude, longitude);
+  }
 }
 

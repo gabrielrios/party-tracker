@@ -25,6 +25,7 @@
        
           <h:outputLabel value="#{bundle.CreatePartyLabel_address}" for="address" />
           <h:inputTextarea rows="4" cols="30" id="address" value="#{partyController.selected.address}" title="#{bundle.CreatePartyTitle_address}" required="true" requiredMessage="#{bundle.CreatePartyRequiredMessage_address}"/>
+          
           <h:outputLabel value="#{bundle.CreatePartyLabel_userId}" for="userId" />
           <h:selectOneMenu id="userId" value="#{partyController.selected.userId}" title="#{bundle.CreatePartyTitle_userId}" required="true" requiredMessage="#{bundle.CreatePartyRequiredMessage_userId}">
             <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>

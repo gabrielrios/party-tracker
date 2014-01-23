@@ -118,9 +118,21 @@ public class Invite implements Serializable {
     return true;
   }
 
+  public void confirmPresence() {
+    this.presence = 1;
+  }
+  
   @Override
   public String toString() {
     return "me.gabrielrios.models.Invite[ id=" + id + " ]";
+  }
+
+  boolean isConfirmed() {
+    if (this.presence != null) {
+      return this.presence == 1;
+    } else {
+      return false;
+    }
   }
   
 }

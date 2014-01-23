@@ -5,6 +5,7 @@
 package me.gabrielrios.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -57,9 +58,9 @@ public class User implements Serializable {
   @Column(name = "email")
   private String email;
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "hostId", fetch = FetchType.LAZY)
-  private Collection<Invite> inviteCollection;
+  private Collection<Invite> inviteHostCollection;
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "guestId", fetch = FetchType.LAZY)
-  private Collection<Invite> inviteCollection1;
+  private Collection<Invite> inviteGuestCollection;
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId", fetch = FetchType.LAZY)
   private Collection<Party> partyCollection;
 
@@ -110,26 +111,44 @@ public class User implements Serializable {
   }
 
   @XmlTransient
-  public Collection<Invite> getInviteCollection() {
-    return inviteCollection;
+  public Collection<Invite> getInviteHostCollection() {
+    return inviteHostCollection;
   }
 
-  public void setInviteCollection(Collection<Invite> inviteCollection) {
-    this.inviteCollection = inviteCollection;
+  public void setInviteHostCollection(Collection<Invite> inviteCollection) {
+    this.inviteHostCollection = inviteCollection;
   }
 
   @XmlTransient
-  public Collection<Invite> getInviteCollection1() {
-    return inviteCollection1;
+  public Collection<Invite> getInviteGuestCollection() {
+    return inviteGuestCollection;
   }
 
-  public void setInviteCollection1(Collection<Invite> inviteCollection1) {
-    this.inviteCollection1 = inviteCollection1;
+  public void setInviteguestCollection(Collection<Invite> inviteCollection1) {
+    this.inviteGuestCollection = inviteCollection1;
   }
 
   @XmlTransient
   public Collection<Party> getPartyCollection() {
     return partyCollection;
+  }
+  
+  public Collection<Invite> getOpenInvites() {
+    ArrayList<Invite> temp = new ArrayList<Invite>();
+    
+    for (Invite i : getInviteGuestCollection()) {
+      if (i.isConfirmed()) {
+      } else {
+        temp.add(i);
+      }
+        
+    }
+    
+    return temp;
+  }
+  
+  public int getOpenInvitesSize() {
+    return getOpenInvites().size();
   }
 
   public void setPartyCollection(Collection<Party> partyCollection) {
@@ -160,5 +179,6 @@ public class User implements Serializable {
   public String toString() {
     return username;
   }
+ 
   
 }
